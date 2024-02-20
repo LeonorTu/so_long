@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:14:23 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 14:28:52 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:11:44 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	error_exit(char *msg);
 // Map validation
 void	check_file(char *file);
 void	check_map(t_game *game);
-void	read_map(t_game *game, char *file);
+char**	read_map(char *file);
 
 void	init_game(t_game *game);
 
