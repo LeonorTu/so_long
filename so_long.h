@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:14:23 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 16:11:44 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:37:42 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ void	error_exit(char *msg);
 // Map validation
 void	check_file(char *file);
 void	check_map(t_game *game);
-char**	read_map(char *file);
+void	read_map(t_game *game, char *file);
 
 void	init_game(t_game *game);
 
 // Display game
 void	init_img(t_game *game);
 void	display_img(t_game *game);
-void	display_player(t_game *game);
+void	display_pe(t_game *game);
 void	move_hook(mlx_key_data_t keydata, void *param);
 char	get_next_block(t_game *game, t_drc direction);
 void	clear_player(t_game *game);

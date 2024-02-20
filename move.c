@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:47:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/19 16:59:39 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:39:08 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	check_status(t_game *game)
 void	move(t_game *game, t_drc direction)
 {
 	char	next_block;
+	char	*moves;
 
 	next_block = get_next_block(game, direction);
 	if (next_block != '1' && next_block != 'E')
@@ -99,12 +100,11 @@ void	move(t_game *game, t_drc direction)
 		game->img_set[PLAYER_RIGHT]->instances[0].y = game->player.y * PIXELS;
 		game->img_set[PLAYER_FAIL]->instances[0].x = game->player.x * PIXELS;
 		game->img_set[PLAYER_FAIL]->instances[0].y = game->player.y * PIXELS;
-		// printf("X:player:%d, img:%d\n", game->player.x, game->img_set[PLAYER_UP]->instances[0].x); //
-		// printf("Y:player:%d, img:%d\n", game->player.y, game->img_set[PLAYER_UP]->instances[0].y); //
-		// printf("moves: %d\n", game->moves);
 	}
 	mlx_delete_image(game->mlx, game->counts);
-	game->counts = mlx_put_string(game->mlx, ft_itoa(game->moves), (game->width + 2) * PIXELS / 2, 0);
+	moves = ft_itoa(game->moves);
+	game->counts = mlx_put_string(game->mlx, moves, (game->width + 2) * PIXELS / 2, 0);
+	free(moves);
 	check_status(game);
 }
 

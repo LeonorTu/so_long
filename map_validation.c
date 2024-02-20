@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:52 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/19 16:52:04 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:54:12 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	check_rectangle(char **map)
 			error_exit("Non-rectangular Map\n");
 		i++;
 	}
-	free(map);
 }
 
 void	check_char(int c)
@@ -100,7 +99,7 @@ void	check_pec(t_game *game)
 
 void	check_valid()
 {
-	
+
 }
 
 void	check_map(t_game *game)
@@ -108,4 +107,5 @@ void	check_map(t_game *game)
 	check_rectangle(game->map);
 	check_wall(game->map);
 	check_pec(game);
+	check_valid();
 }

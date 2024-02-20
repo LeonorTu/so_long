@@ -1,0 +1,9 @@
+obj/
+archives/
+libft/libft.a
+MLX42/build/
+so_long
+*.dSYM/
+.DS_Store
+*.o
+*.py

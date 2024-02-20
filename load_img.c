@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:13:42 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/19 16:39:29 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:38:44 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	load_img(mlx_t *mlx, mlx_image_t **img, char *path)
 
 void	init_img(t_game *game)
 {
+	game->mlx = mlx_init(game->width * PIXELS, game->height * PIXELS, "so_long", true);
+	if (!game->mlx)
+		error_exit("mlx_init failed");
 	load_img(game->mlx, &game->img_set[START], "assets/start.png");
 	load_img(game->mlx, &game->img_set[EXIT_CLOSED], "assets/exit_closed.png");
 	load_img(game->mlx, &game->img_set[EXIT_OPEN], "assets/exit_open.png");
@@ -41,27 +44,6 @@ void	init_img(t_game *game)
 	load_img(game->mlx, &game->img_set[COLLECTIBLE], "assets/egg.png");
 	load_img(game->mlx, &game->img_set[ENEMY], "assets/chicken.png");
 }
-
-// void	select_img(t_game *game, int x, int y)
-// {
-// 	if (game->map[y][x] == 'P')
-// 	{
-// 		if (mlx_image_to_window(game->mlx, game->img_set[PLAYER_STAND], x * PIXELS, y * PIXELS) < 0)
-// 				error_exit("Failed to put image to window");
-// 		if (mlx_image_to_window(game->mlx, game->img_set[PLAYER_UP], x * PIXELS, y * PIXELS) < 0)
-// 				error_exit("Failed to put image to window");
-// 		if (mlx_image_to_window(game->mlx, game->img_set[PLAYER_DOWN], x * PIXELS, y * PIXELS) < 0)
-// 				error_exit("Failed to put image to window");
-// 		if (mlx_image_to_window(game->mlx, game->img_set[PLAYER_LEFT], x * PIXELS, y * PIXELS) < 0)
-// 				error_exit("Failed to put image to window");
-// 		if (mlx_image_to_window(game->mlx, game->img_set[PLAYER_RIGHT], x * PIXELS, y * PIXELS) < 0)
-// 				error_exit("Failed to put image to window");
-// 		if (mlx_image_to_window(game->mlx, game->img_set[PLAYER_FAIL], x * PIXELS, y * PIXELS) < 0)
-// 				error_exit("Failed to put image to window");
-// 		clear_player(game);
-// 		game->img_set[PLAYER_STAND]->enabled = true;
-// 	}
-// }
 
 void	display_bg(t_game *game)
 {
@@ -92,7 +74,7 @@ void	display_bg(t_game *game)
 	}
 }
 
-void	display_player(t_game *game)
+void	display_pe(t_game *game)
 {
 	int	x;
 	int	y;
@@ -133,7 +115,7 @@ void	display_player(t_game *game)
 void	display_img(t_game *game)
 {
 	display_bg(game);
-	display_player(game);
+	display_pe(game);
 	mlx_put_string(game->mlx, "Moves:", (game->width - 6) * PIXELS / 2, 0);
 	game->counts = mlx_put_string(game->mlx, "0", (game->width + 2) * PIXELS / 2, 0);
 }
