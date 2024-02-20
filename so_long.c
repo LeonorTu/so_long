@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:42:53 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 16:53:44 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 17:13:52 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	read_map(t_game *game, char *file)
 	if (fd < 0)
 		return ;
 	line = get_next_line(fd);
-	game->width = ft_strlen(line);
+	game->width = ft_strlen(line) - 1;
 	all_lines = ft_strdup("");
 	while (line)
 	{

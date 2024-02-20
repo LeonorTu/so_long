@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:13:42 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 16:38:44 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 17:06:49 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ void	init_img(t_game *game)
 	game->mlx = mlx_init(game->width * PIXELS, game->height * PIXELS, "so_long", true);
 	if (!game->mlx)
 		error_exit("mlx_init failed");
-	load_img(game->mlx, &game->img_set[START], "assets/start.png");
-	load_img(game->mlx, &game->img_set[EXIT_CLOSED], "assets/exit_closed.png");
-	load_img(game->mlx, &game->img_set[EXIT_OPEN], "assets/exit_open.png");
-	load_img(game->mlx, &game->img_set[GRASS], "assets/grass.png");
-	load_img(game->mlx, &game->img_set[WALL], "assets/water.png");
-	load_img(game->mlx, &game->img_set[PLAYER_STAND], "assets/stand.png");
-	load_img(game->mlx, &game->img_set[PLAYER_UP], "assets/up.png");
-	load_img(game->mlx, &game->img_set[PLAYER_DOWN], "assets/down.png");
-	load_img(game->mlx, &game->img_set[PLAYER_LEFT], "assets/left.png");
-	load_img(game->mlx, &game->img_set[PLAYER_RIGHT], "assets/right.png");
-	load_img(game->mlx, &game->img_set[PLAYER_FAIL], "assets/fail.png");
-	load_img(game->mlx, &game->img_set[COLLECTIBLE], "assets/egg.png");
-	load_img(game->mlx, &game->img_set[ENEMY], "assets/chicken.png");
+	load_img(game->mlx, &game->img_set[START], "textures/start.png");
+	load_img(game->mlx, &game->img_set[EXIT_CLOSED], "textures/exit_closed.png");
+	load_img(game->mlx, &game->img_set[EXIT_OPEN], "textures/exit_open.png");
+	load_img(game->mlx, &game->img_set[GRASS], "textures/grass.png");
+	load_img(game->mlx, &game->img_set[WALL], "textures/water.png");
+	load_img(game->mlx, &game->img_set[PLAYER_STAND], "textures/stand.png");
+	load_img(game->mlx, &game->img_set[PLAYER_UP], "textures/up.png");
+	load_img(game->mlx, &game->img_set[PLAYER_DOWN], "textures/down.png");
+	load_img(game->mlx, &game->img_set[PLAYER_LEFT], "textures/left.png");
+	load_img(game->mlx, &game->img_set[PLAYER_RIGHT], "textures/right.png");
+	load_img(game->mlx, &game->img_set[PLAYER_FAIL], "textures/fail.png");
+	load_img(game->mlx, &game->img_set[COLLECTIBLE], "textures/egg.png");
+	load_img(game->mlx, &game->img_set[ENEMY], "textures/chicken.png");
 }
 
 void	display_bg(t_game *game)
