@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:52 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 17:15:04 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/20 18:20:06 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,45 @@ void	check_pec(t_game *game)
 		error_exit("Invalid Map Content\n");
 }
 
-void	check_valid()
+int	check_valid(t_game *game, char **map, int32_t x, int32_t y)
 {
-	
+	static int	collected;
+	static int	exit;
+
+	if (map[y][x] == 'E')
+		exit = 1;
+	if (map[y][x] == 'C')
+		collected++;
+	map[y][x] = '1';
+	// if (x < game->width - 1 && y < game->height -1)
+	if (map[y + 1][x] != '1')
+		check_valid(game, map, x, y + 1);
+	if (map[y - 1][x] != '1')
+		check_valid(game, map, x, y - 1);
+	if (map[y][x + 1] != '1')
+		check_valid(game, map, x + 1, y);
+	if (map[y][x - 1] != '1')
+		check_valid(game, map, x - 1, y);
+	if (exit == 1 && collected == game->collectible)
+		return (1);
+	return (0);
 }
 
 void	check_map(t_game *game)
 {
+	char	**temp;
+	int		i;
+
 	check_rectangle(game->map);
 	check_wall(game->map);
 	check_pec(game);
-	// check_valid();
+	temp = malloc(game->height * sizeof(char *));
+	i = 0;
+	while(i < game->height)
+	{
+		temp[i] = ft_strdup(game->map[i]);
+		i++;
+	}
+	if (!check_valid(game, temp, game->player.x, game->player.y))
+		error_exit("Invalid Map Path\n");
 }

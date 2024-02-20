@@ -7,3 +7,4 @@ so_long
 .DS_Store
 *.o
 *.py
+.vscode/
