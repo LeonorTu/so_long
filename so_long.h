@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:14:23 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 16:37:42 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/21 14:16:25 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "libft/get_next_line/get_next_line_bonus.h"
 # include "MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
-# include <stdio.h> //
 
 typedef enum s_drc
 {
@@ -66,44 +65,47 @@ typedef struct s_game
 	int32_t		height;
 	int			collectible;
 	int			enemy;
+	int			player;
+	int			exit;
 	int			moves;
 	int			collected;
 	mlx_t		*mlx;
 	mlx_image_t	*img_set[NUM_BLOCK_TYPES];
 	mlx_image_t	*counts;
 	t_status	status;
-	t_crd		player;
-	t_crd		exit;
+	t_crd		player_crd;
+	t_crd		exit_crd;
 }	t_game;
 
 # define PIXELS 16
 
 // Errors handling
 void	error_exit(char *msg);
+void	delete_map(char **map, int32_t height);
 
-// Map validation
-void	check_file(char *file);
-void	check_map(t_game *game);
+// Map Reading
 void	read_map(t_game *game, char *file);
 
-void	init_game(t_game *game);
+// Map validation
+void	check_char(int c);
+void	check_file(char *file);
+void	check_map(t_game *game);
+void	get_crd(t_game *game);
 
 // Display game
 void	init_img(t_game *game);
 void	display_img(t_game *game);
-void	display_pe(t_game *game);
-void	move_hook(mlx_key_data_t keydata, void *param);
-char	get_next_block(t_game *game, t_drc direction);
-void	clear_player(t_game *game);
-void	collect_points(t_game *game, int32_t x, int32_t y);
 
 // Play game
+void	move_hook(mlx_key_data_t keydata, void *param);
+void	clear_player(t_game *game);
 void	move_enemy(void *param);
+char	get_next_block(t_game *game, t_drc direction);
+void	collect_points(t_game *game, int32_t x, int32_t y);
 
 // End game
 void	check_enemy(t_game *game);
-
-
-void	print_map(char **map); //
+void	check_status(t_game *game);
+void	end_game(mlx_key_data_t keydata, void *param);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:52 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/20 18:20:06 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/21 14:18:36 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_rectangle(char **map)
+static void	check_rectangle(char **map)
 {
 	int		i;
 
@@ -25,89 +25,70 @@ void	check_rectangle(char **map)
 	}
 }
 
-void	check_char(int c)
+static void	check_wall(char **map)
 {
-	if (!ft_strchr("01CEPX\n", c))
-		error_exit("Invalid Characters\n");
-}
+	int	x;
+	int	y;
 
-void	check_wall(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-		i++;
-	while (map[0][j] && map[i - 1][j])
+	x = 0;
+	y = 0;
+	while (map[y])
+		y++;
+	while (map[0][x] && map[y - 1][x])
 	{
-		if (map[0][j]  != '1' || map[i - 1][j] != '1')
+		if (map[0][x] != '1' || map[y - 1][x] != '1')
 			error_exit("Invalid Walls\n");
-		j++;
+		x++;
 	}
-	i = 1;
-	j = ft_strlen(map[i]);
-	while (map[i])
+	y = 1;
+	x = ft_strlen(map[y]);
+	while (map[y])
 	{
-		if (map[i][0]  != '1' || map[i][j-1] != '1')
+		if (map[y][0] != '1' || map[y][x - 1] != '1')
 			error_exit("Invalid Walls\n");
-		i++;
+		y++;
 	}
 }
 
-void	check_pec(t_game *game)
+static void	check_pec(t_game *game)
 {
-	int	exit;
-	int	player;
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	exit = 0;
-	player = 0;
-	i = 0;
-	while (game->map[i])
+	y = 0;
+	while (game->map[y])
 	{
-		j = 0;
-		while (game->map[i][j])
+		x = 0;
+		while (game->map[y][x])
 		{
-			if (game->map[i][j] == 'C')
+			if (game->map[y][x] == 'C')
 				game->collectible++;
-			else if (game->map[i][j] == 'X')
+			else if (game->map[y][x] == 'X')
 				game->enemy++;
-			else if (game->map[i][j] == 'E')
-			{
-				exit++;
-				game->exit.y = i;
-				game->exit.x = j;
-			}
-			else if (game->map[i][j] == 'P')
-			{
-				player++;
-				game->player.y = i;
-				game->player.x = j;
-			}
+			else if (game->map[y][x] == 'E')
+				game->exit++;
+			else if (game->map[y][x] == 'P')
+				game->player++;
 			else
-				check_char(game->map[i][j]);
-			j++;
+				check_char(game->map[y][x]);
+			x++;
 		}
-		i++;
+		y++;
 	}
-	if (game->collectible < 1 || exit != 1 || player != 1)
+	if (game->collectible < 1 || game->exit != 1 || game->player != 1)
 		error_exit("Invalid Map Content\n");
 }
 
-int	check_valid(t_game *game, char **map, int32_t x, int32_t y)
+static int	check_valid(t_game *game, char **map, int32_t x, int32_t y)
 {
 	static int	collected;
 	static int	exit;
 
 	if (map[y][x] == 'E')
-		exit = 1;
+		exit++;
 	if (map[y][x] == 'C')
 		collected++;
 	map[y][x] = '1';
-	// if (x < game->width - 1 && y < game->height -1)
 	if (map[y + 1][x] != '1')
 		check_valid(game, map, x, y + 1);
 	if (map[y - 1][x] != '1')
@@ -130,12 +111,16 @@ void	check_map(t_game *game)
 	check_wall(game->map);
 	check_pec(game);
 	temp = malloc(game->height * sizeof(char *));
+	if (!temp)
+		error_exit("Memory Allocation Failed\n");
 	i = 0;
-	while(i < game->height)
+	while (i < game->height)
 	{
 		temp[i] = ft_strdup(game->map[i]);
 		i++;
 	}
-	if (!check_valid(game, temp, game->player.x, game->player.y))
+	get_crd(game);
+	if (!check_valid(game, temp, game->player_crd.x, game->player_crd.y))
 		error_exit("Invalid Map Path\n");
+	delete_map(temp, game->height);
 }

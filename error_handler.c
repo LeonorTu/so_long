@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:31:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/06 13:34:58 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/21 14:15:41 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,14 @@ void	error_exit(char *msg)
 {
 	ft_putendl_fd(msg, 2);
 	exit(1);
+}
+
+void	delete_map(char **map, int32_t height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+		free(map[i++]);
+	free(map);
 }

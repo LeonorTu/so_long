@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:25:04 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/18 17:34:15 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/21 12:51:23 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	get_next_block(t_game *game, t_drc direction)
 {
 	t_crd	next;
 
-	next = (t_crd){game->player.x, game->player.y};
+	next = (t_crd){game->player_crd.x, game->player_crd.y};
 	if (direction == UP)
 		next.y--;
 	else if (direction == DOWN)
@@ -45,11 +45,28 @@ void	collect_points(t_game *game, int32_t x, int32_t y)
 	i = 0;
 	while (i < game->collectible)
 	{
-		if (game->img_set[COLLECTIBLE]->instances[i].x == x * PIXELS &&
+		if (game->img_set[COLLECTIBLE]->instances[i].x == x * PIXELS && \
 		game->img_set[COLLECTIBLE]->instances[i].y == y * PIXELS)
 			game->img_set[COLLECTIBLE]->instances[i].enabled = false;
 		i++;
 	}
 	game->map[y][x] = '0';
 	game->collected++;
+}
+
+void	check_status(t_game *game)
+{
+	if (game->collected == game->collectible)
+	{
+		if (mlx_image_to_window(game->mlx, game->img_set[EXIT_OPEN], \
+		game->exit_crd.x * PIXELS, game->exit_crd.y * PIXELS) < 0)
+			error_exit("Failed to put image to window");
+		game->map[game->exit_crd.y][game->exit_crd.x] = '0';
+		if (game->player_crd.x == game->exit_crd.x && game->player_crd.y \
+		== game->exit_crd.y)
+		{
+			game->status = WON;
+			mlx_key_hook(game->mlx, end_game, game);
+		}
+	}
 }
