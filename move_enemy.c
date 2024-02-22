@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:17:11 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 12:51:46 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/22 15:23:07 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	check_enemy(t_game *game)
 			clear_player(game);
 			game->img_set[PLAYER_FAIL]->enabled = true;
 			game->status = FAILED;
+			mlx_put_string(game->mlx, "YOU LOST :(", (game->width - 7) * \
+			PIXELS / 2, (game->height - 2) * PIXELS / 2);
 			mlx_key_hook(game->mlx, end_game, game);
 		}
 		i++;

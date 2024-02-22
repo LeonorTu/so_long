@@ -6,23 +6,30 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:52 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 14:18:36 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/22 15:38:07 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	check_rectangle(char **map)
+static void	check_rectangle(t_game *game)
 {
-	int		i;
+	int	i;
+	int	len;
 
 	i = 1;
-	while (map[i])
+	while (game->map[i])
 	{
-		if (ft_strlen(map[i]) != ft_strlen(map[0]))
-			error_exit("Non-rectangular Map\n");
+		if (ft_strlen(game->map[i]) != ft_strlen(game->map[0]))
+			error_exit("Non-rectangular Map");
 		i++;
 	}
+	if (i != game->height)
+		error_exit("Empty Line in Map");
+	len = ft_strlen(game->map_s);
+	if (game->map_s[len - 1] == '\n')
+		error_exit("Empty Line in Map");
+	free(game->map_s);
 }
 
 static void	check_wall(char **map)
@@ -37,7 +44,7 @@ static void	check_wall(char **map)
 	while (map[0][x] && map[y - 1][x])
 	{
 		if (map[0][x] != '1' || map[y - 1][x] != '1')
-			error_exit("Invalid Walls\n");
+			error_exit("Invalid Walls");
 		x++;
 	}
 	y = 1;
@@ -45,7 +52,7 @@ static void	check_wall(char **map)
 	while (map[y])
 	{
 		if (map[y][0] != '1' || map[y][x - 1] != '1')
-			error_exit("Invalid Walls\n");
+			error_exit("Invalid Walls");
 		y++;
 	}
 }
@@ -76,7 +83,7 @@ static void	check_pec(t_game *game)
 		y++;
 	}
 	if (game->collectible < 1 || game->exit != 1 || game->player != 1)
-		error_exit("Invalid Map Content\n");
+		error_exit("Invalid Map Content");
 }
 
 static int	check_valid(t_game *game, char **map, int32_t x, int32_t y)
@@ -107,12 +114,14 @@ void	check_map(t_game *game)
 	char	**temp;
 	int		i;
 
-	check_rectangle(game->map);
+	if (!*(game->map))
+		error_exit("Empty Map");
+	check_rectangle(game);
 	check_wall(game->map);
 	check_pec(game);
 	temp = malloc(game->height * sizeof(char *));
 	if (!temp)
-		error_exit("Memory Allocation Failed\n");
+		error_exit("Memory Allocation Failed");
 	i = 0;
 	while (i < game->height)
 	{
@@ -121,6 +130,6 @@ void	check_map(t_game *game)
 	}
 	get_crd(game);
 	if (!check_valid(game, temp, game->player_crd.x, game->player_crd.y))
-		error_exit("Invalid Map Path\n");
+		error_exit("Invalid Map Path");
 	delete_map(temp, game->height);
 }

@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:47:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 12:53:59 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/22 15:32:03 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	move(t_game *game, t_drc direction)
 	char	*moves;
 
 	next_block = get_next_block(game, direction);
-	if (next_block != '1' && next_block != 'E')
+	if (next_block != '1' && (next_block != 'E' || game->exit == 1))
 	{
 		clear_player(game);
 		move_player(game, direction);
@@ -70,6 +70,7 @@ static void	move(t_game *game, t_drc direction)
 	game->counts = mlx_put_string(game->mlx, moves, \
 	(game->width + 2) * PIXELS / 2, 0);
 	free(moves);
+	check_enemy(game);
 	check_status(game);
 }
 

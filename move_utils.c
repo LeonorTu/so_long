@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:25:04 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 12:51:23 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/22 15:29:59 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,14 @@ void	check_status(t_game *game)
 		game->exit_crd.x * PIXELS, game->exit_crd.y * PIXELS) < 0)
 			error_exit("Failed to put image to window");
 		game->map[game->exit_crd.y][game->exit_crd.x] = '0';
+		game->exit = 0;
 		if (game->player_crd.x == game->exit_crd.x && game->player_crd.y \
 		== game->exit_crd.y)
 		{
 			game->status = WON;
+			clear_player(game);
+			mlx_put_string(game->mlx, "GOOD JOB! :D", (game->width - 8) * \
+			PIXELS / 2, (game->height - 2) * PIXELS / 2);
 			mlx_key_hook(game->mlx, end_game, game);
 		}
 	}
