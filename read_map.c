@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:58:54 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/22 15:37:38 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/26 13:43:00 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	read_map(t_game *game, char *file)
 	if (fd < 0)
 		error_exit("Unreadable Map");
 	line = get_next_line(fd);
-	game->width = ft_strlen(line) - 1;
+	if (line)
+		game->width = ft_strlen(line) - 1;
 	all_lines = ft_strdup("");
 	while (line)
 	{

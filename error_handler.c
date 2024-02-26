@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:31:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/22 12:18:46 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/26 14:17:00 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	error_exit(char *msg)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(msg, 2);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 void	delete_map(char **map, int32_t height)

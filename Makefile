@@ -4,7 +4,17 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = $(wildcard *.c)
+SRCS = so_long.c \
+	read_map.c \
+	map_validation.c \
+	map_utils.c \
+	load_img.c \
+	display_img.c \
+	error_handler.c \
+	move_player.c \
+	move_enemy.c \
+	move_utils.c \
+	end_game.c
 
 CFLAGS = -g -Wall -Wextra -Werror
 
@@ -19,6 +29,8 @@ $(LIBFT):
 	make -C libft/
 
 $(MLX42):
+	cd MLX42 && cmake -B build
+	cd MLX42 && cmake --build build -j4
 	make -C MLX42/build -j4
 
 clean:

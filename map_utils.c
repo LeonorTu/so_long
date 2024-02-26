@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:48:32 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 12:50:11 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/26 14:16:40 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	check_file(char *file)
 
 	len = ft_strlen(file);
 	if (len < 4 || ft_strncmp(file + len - 4, ".ber", 4))
-		error_exit("Invalid Map\n");
+		error_exit("Invalid Map");
 }
 
 void	check_char(int c)
 {
 	if (!ft_strchr("01CEPX\n", c))
-		error_exit("Invalid Characters\n");
+		error_exit("Invalid Characters");
 }
 
 void	get_crd(t_game *game)

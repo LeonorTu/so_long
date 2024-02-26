@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:14:23 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 14:16:25 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/26 14:17:41 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_crd
 typedef struct s_game
 {
 	char		**map;
+	char		*map_s;
 	int32_t		width;
 	int32_t		height;
 	int			collectible;
@@ -78,6 +79,7 @@ typedef struct s_game
 }	t_game;
 
 # define PIXELS 16
+# define TIME_ENEMY 30
 
 // Errors handling
 void	error_exit(char *msg);

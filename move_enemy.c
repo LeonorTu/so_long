@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:17:11 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/22 15:23:07 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/26 14:17:29 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	move_enemy(void *param)
 
 	game = (t_game *) param;
 	check_enemy(game);
-	if (j++ < 30)
+	if (j++ < TIME_ENEMY)
 		return ;
 	i = 0;
 	while (i < game->enemy && game->status == PLAYING)

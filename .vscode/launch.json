@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "(lldb) fixed args",
 			"program": "${workspaceFolder}/so_long",
-			"args": ["maps/map.ber"],
+			"args": ["maps/map_empty.ber"],
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "make",
 		},
