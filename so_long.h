@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:14:23 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/26 14:17:41 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/01 16:15:07 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef enum s_block
 	NUM_BLOCK_TYPES
 }	t_block;
 
-typedef enum status
+typedef enum s_status
 {
 	PLAYING,
 	FAILED,
