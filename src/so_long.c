@@ -6,11 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:42:53 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/22 15:35:48 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:24:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static void	init_game(t_game *game)
 {

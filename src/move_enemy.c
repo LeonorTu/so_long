@@ -6,11 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:17:11 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/26 14:17:29 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:24:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static void	move_all(t_game *game, int i)
 {

@@ -6,11 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:58:54 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/26 13:43:00 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:24:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 void	read_map(t_game *game, char *file)
 {

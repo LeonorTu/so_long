@@ -6,11 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:25:04 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/22 15:29:59 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:24:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 char	get_next_block(t_game *game, t_drc direction)
 {

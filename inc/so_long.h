@@ -6,16 +6,16 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:14:23 by jtu               #+#    #+#             */
-/*   Updated: 2024/03/01 16:15:07 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:37:25 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "libft/libft.h"
-# include "libft/get_next_line/get_next_line_bonus.h"
-# include "MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+# include "../libft/get_next_line/get_next_line_bonus.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 
 typedef enum s_drc

@@ -4,17 +4,17 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = so_long.c \
-	read_map.c \
-	map_validation.c \
-	map_utils.c \
-	load_img.c \
-	display_img.c \
-	error_handler.c \
-	move_player.c \
-	move_enemy.c \
-	move_utils.c \
-	end_game.c
+SRCS = src/so_long.c \
+	src/read_map.c \
+	src/map_validation.c \
+	src/map_utils.c \
+	src/load_img.c \
+	src/display_img.c \
+	src/error_handler.c \
+	src/move_player.c \
+	src/move_enemy.c \
+	src/move_utils.c \
+	src/end_game.c
 
 CFLAGS = -Wall -Wextra -Werror
 

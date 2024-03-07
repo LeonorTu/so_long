@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   end_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 13:31:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/26 14:17:00 by jtu              ###   ########.fr       */
+/*   Created: 2024/02/21 12:14:19 by jtu               #+#    #+#             */
+/*   Updated: 2024/03/07 20:23:46 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
-void	error_exit(char *msg)
+void	end_game(mlx_key_data_t keydata, void *param)
 {
-	ft_putendl_fd("Error", 2);
-	ft_putendl_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}
+	t_game	*game;
 
-void	delete_map(char **map, int32_t height)
-{
-	int	i;
-
-	i = 0;
-	while (i < height)
-		free(map[i++]);
-	free(map);
+	game = (t_game *) param;
+	mlx_put_string(game->mlx, "(Press ESC to exit...)", (game->width - 13) \
+	* PIXELS / 2, game->height * PIXELS / 2);
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(game->mlx);
 }

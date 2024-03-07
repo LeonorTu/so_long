@@ -6,11 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:06:45 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 13:22:06 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:23:38 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static void	select_img(t_game *game, int32_t x, int32_t y)
 {

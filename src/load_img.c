@@ -6,11 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:13:42 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/21 14:20:10 by jtu              ###   ########.fr       */
+/*   Updated: 2024/03/07 20:24:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static void	load_img(mlx_t *mlx, mlx_image_t **img, char *path)
 {
