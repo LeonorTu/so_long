@@ -1,3 +1,3 @@
 # so_long
 
-# <img src="./img/game.png" alt="GreenBin Logo" width="35">  Greenbin
+# <img src="./img/game.png" alt="GreenBin Logo" width="35">
