@@ -1,6 +1,6 @@
 # so_long
 
-# <img src="./img/game.png" alt="GreenBin Logo" width="500">
+# <img src="./img/game1.png" alt="So_long" width="500">
 
 ### Table of Contents
 
