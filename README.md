@@ -30,7 +30,7 @@ If any of these checks fail, the game must end with ``Error\n`` followed by a cu
 The goal is for the player(s) to collect all the collectibles on the map before going to an exit in the least possible number of steps
 
 ## How it Works
-For the graphics part of the project we used a library called ``MLX42``(https://github.com/codam-coding-college/MLX42). It's fairly basic and somewhat limited, but was still fun to use in the project.
+For the graphics part of the project we used a library called [MLX42](https://github.com/codam-coding-college/MLX42). It's fairly basic and somewhat limited, but was still fun to use in the project.
 
 <img src="./img/Playing.gif" alt="Instruction" width="500">
 
@@ -110,15 +110,6 @@ cd MLX42
 cmake -B build # build here refers to the outputfolder.
 cmake --build build -j4 # or do make -C build -j4
 ```
-
-```shell
-cd minilibx_opengl
-make
-sudo cp mlx.h /usr/local/include
-sudo cp libmlx.a /usr/local/lib
-sudo reboot
-```
-Note: A reboot is necessary to ensure that the ``Xquartz`` is working properly. You can test if it is by running a test example with the command ``xeyes``.
 
 ### Usage
 
