@@ -8,7 +8,7 @@
 * [How it Works](#how-it-works)
 * [Extras](#extras)
 * [Gameplay](#gameplay)
-* [Other Maps](#other-maps)
+* [Maps](#maps)
 * [Installation](#installation)
 * [Summary](#summary)
 
@@ -92,7 +92,7 @@ There are many maps to try your skill/luck. See [Maps](./maps)
 
 ### Cloning the repositories
 ```shell
-git clone https://gitlab.com/madebypixel02/so_long.git
+git clone https://github.com/LeonorTu/so_long
 cd so_long
 make
 ```
@@ -110,12 +110,8 @@ cmake --build build -j4 # or do make -C build -j4
 
 ```
 make                        compiles so_long executable
-make test MAP={path_to_map} compiles and executes so_long with the specified map
-make play                   compiles and executes a small set of maps sequentially
-make play2                  compiles and executes a much larger set of maps sequentially
 ```
 Note: we were not allowed to use multiple threads, thus it is pretty hard to time the speeds of the game. I found that using valgrind on ``linux`` helps slow the game down so it is more similar to the performance in MacOS. Depending on your computer's performance the speed of the game may vary. I hope to learn ways to improve that for future projects. For ``linux``, try always using valgrind as follows: ``valgrind ./so_long <map.ber>``
 
 ## Summary
-This has been my favorite project so far, coding my own pacman clone was so much fun, regargless how flawed it might be :)
-
+This is a really fun project.
