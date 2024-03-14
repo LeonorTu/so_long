@@ -32,7 +32,7 @@ The goal is for the player(s) to collect all the collectibles on the map before 
 ## How it Works
 For the graphics part of the project we used a library called ``minilibx``. It's fairly basic and somewhat limited, but was still fun to use in the project.
 
-
+<img src="./img/Playing.gif" alt="Instruction" width="500">
 
 ### Part 1: reading the map
 
