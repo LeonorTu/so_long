@@ -30,14 +30,14 @@ If any of these checks fail, the game must end with ``Error\n`` followed by a cu
 The goal is for the player(s) to collect all the collectibles on the map before going to an exit in the least possible number of steps
 
 ## How it Works
-For the graphics part of the project we used a library called ``minilibx``. It's fairly basic and somewhat limited, but was still fun to use in the project.
+For the graphics part of the project we used a library called ``MLX42``(https://github.com/codam-coding-college/MLX42). It's fairly basic and somewhat limited, but was still fun to use in the project.
 
 <img src="./img/Playing.gif" alt="Instruction" width="500">
 
 ### Part 1: reading the map
 
 In this part of the code I checked that the given map was properly opened, that it had a ``.ber`` filetype, and then continued by reading the file one line at a time with [get_next_line](https://github.com/LeonorTu/cursus-projects/tree/main/get_next_line).
-Once that was done I filled a struct ``t_game`` with some basic map attributes like number of players, exits, collectibles, number of rows and columns, etc. During the reading process I also created a string containing the entire map, whcih was later useful when creating a matrix with ``ft_split`` with ``\n`` as the separator.
+Once that was done I filled a struct ``t_game`` with some basic attributes like number of players, exits, collectibles, the width and height of the map, etc. During the reading process I also created a string containing the entire map, whcih was later useful when creating a matrix with ``ft_split`` with ``\n`` as the separator.
 
 
 
@@ -49,7 +49,7 @@ The ``mlx`` library has hooks, which essentially link certain events on the comp
 
 ### Part 3: game mechanics
 
-When the ``ESC``/``Q`` key is pressed, the game ends. If the arrow keys or the ``W``. ``A``, ``S``, ``D`` keys are pressed, every pacman on the map changes its direction and tries to move in that direction. Also, every so often all pacmans will all try to move in the same direction they're headed. This way the arrow/WASD keys just change pacmans' directions to make them move forward till they hit a wall.
+When the ``ESC``/``Q`` key is pressed, the game ends. If the arrow keys or the ``W``. ``A``, ``S``, ``D`` (or ``↑``, ``←``, ``↓``, ``→``) keys are pressed, every pacman on the map changes its direction and tries to move in that direction. Also, every so often all pacmans will all try to move in the same direction they're headed. This way the arrow/WASD keys just change pacmans' directions to make them move forward till they hit a wall.
 Ghosts behave similarly (they're the first bonus: enemies), but instead of responding the keypress, they use a basic algorithm to find the closest pacman and try to catch it. Whenever a pacman is caught by a ghost, the attribute ``pac_dying`` is set to 1 in the ``t_game`` struct and all pacmans die with a short animation.
 Ghosts load in seven different colors, and each new ghost will have a different color. To do this, I had to load every sprite of every color with the mlx library and assign a new color to every new ghost with ``ghost_number % number_of_colors``, thus rotating through the list of colors when there are more ghosts than available colors.
 
@@ -102,23 +102,14 @@ cd so_long
 make
 ```
 
-### Installing the MLX library
+### Downoading and building the MLX42 library
 
-* ``Linux``
-
-If you're not using a MacOS computer from 42, you'll need to install the libraries manually. Please refer to the [official github](https://github.com/42Paris/minilibx-linux) for more details. To install it, do the following (requires root access):
-
-```shell
-git clone https://github.com/42Paris/minilibx-linux.git
-cd minilibx-linux/
-make
-sudo cp mlx.h /usr/include
-sudo cp libmlx.a /usr/lib
 ```
-
-* ``MacOS``
-
-To install the library, you will need to first install a package manager like homebrew (check [here](https://brew.sh/)) to then install the X11 package with ``brew install Xquartz``. After that you must extract the minilibx file called ``minilibx_opengl.tgz``. Then install it to your system with the following commands (requires sudo as well):
+git clone https://github.com/codam-coding-college/MLX42.git
+cd MLX42
+cmake -B build # build here refers to the outputfolder.
+cmake --build build -j4 # or do make -C build -j4
+```
 
 ```shell
 cd minilibx_opengl
@@ -129,21 +120,6 @@ sudo reboot
 ```
 Note: A reboot is necessary to ensure that the ``Xquartz`` is working properly. You can test if it is by running a test example with the command ``xeyes``.
 
-### Installing the manuals
-
-If you want quick access to the mlx manuals, it is recommended that you copy the files from the ``man`` folder in [minilibx-linux](https://github.com/42Paris/minilibx-linux) to your system manuals:
-
-* ``Linux``
-```shell
-sudo cp man/man3/* /usr/share/man/man3/
-```
-Note: Depending on your Linux configuration, to get the manuals working (e.g. ``man mlx``) you will need to individually gzip all the manual files you just copied, e.g. ``sudo gzip /usr/share/man/man3/mlx.3``.
-
-* ``MacOS``
-```shell
-sudo cp man/man3/* /usr/X11/share/man/man3
-```
-
 ### Usage
 
 ```
@@ -151,8 +127,6 @@ make                        compiles so_long executable
 make test MAP={path_to_map} compiles and executes so_long with the specified map
 make play                   compiles and executes a small set of maps sequentially
 make play2                  compiles and executes a much larger set of maps sequentially
-make git                    adds and commits everything, then pushes to upstream branch
-make norminette             runs norminette for all files in the project that need to pass it
 ```
 Note: we were not allowed to use multiple threads, thus it is pretty hard to time the speeds of the game. I found that using valgrind on ``linux`` helps slow the game down so it is more similar to the performance in MacOS. Depending on your computer's performance the speed of the game may vary. I hope to learn ways to improve that for future projects. For ``linux``, try always using valgrind as follows: ``valgrind ./so_long <map.ber>``
 
