@@ -19,7 +19,7 @@ In this project, we'll code a simple 2D game to get familiar with the mlx librar
 The game we choose must follow a set of rules. The executable ``so_long`` will receive a map as the only argument, and this map will have a ``.ber`` filetype.
 
 The file also must follow these rules:
-- Only ``P`` *(pacman)*, ``1`` *(wall)*, ``0`` *(empty)*, ``C`` *(collectible)*, and ``E`` *(exit)* will be accepted characters in our map (except if you add enemies as bonus)
+- Only ``P`` *(player)*, ``1`` *(wall)*, ``0`` *(empty)*, ``C`` *(collectible)*, and ``E`` *(exit)* will be accepted characters in our map (except if you add enemies as bonus)
 - The map must be rectangular, i.e. all rows must have the same length
 - There must be at least one exit, one player, and one collectible on the map
 - The map must be closed, i.e. surrounded by walls
@@ -92,7 +92,7 @@ There are many maps to try your skill/luck. See [Maps](./maps)
 
 ### Cloning the repositories
 ```shell
-git clone https://github.com/LeonorTu/so_long
+git clone https://github.com/LeonorTu/so_long so_long
 cd so_long
 make
 ```
