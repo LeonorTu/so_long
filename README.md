@@ -10,7 +10,6 @@
 * [Gameplay](#gameplay)
 * [Other Maps](#other-maps)
 * [Installation](#installation)
-* [Technical Issues](#technical-issues)
 * [Summary](#summary)
 
 ## Introduction
@@ -86,12 +85,8 @@ There are a total of 30 maps available. See [MAPS.md](./tests/MAPS.md)
 
 Here are a few sample gameplays from my favorite maps:
 
-
-
-## Other Maps
-There are 20+ maps (ported from [Machine-Learning-Pacman](https://gitlab.com/madebypixel02/Machine-Learning-Pacman/tree/main/layouts)) to try your skill/luck.
-
-See [Other Maps](./tests/MAPS.md#other-maps)
+## Maps
+There are many maps to try your skill/luck. See [Maps](./maps)
 
 ## Installation
 
@@ -120,15 +115,6 @@ make play                   compiles and executes a small set of maps sequential
 make play2                  compiles and executes a much larger set of maps sequentially
 ```
 Note: we were not allowed to use multiple threads, thus it is pretty hard to time the speeds of the game. I found that using valgrind on ``linux`` helps slow the game down so it is more similar to the performance in MacOS. Depending on your computer's performance the speed of the game may vary. I hope to learn ways to improve that for future projects. For ``linux``, try always using valgrind as follows: ``valgrind ./so_long <map.ber>``
-
-## Technical Issues
-
-Throughout the project, there have been a few roadblocks that needed to be worked around, here's some of them:
-
-- Timing: getting the timing for animations and other stuff right was quite challenging. I ended up just using the number of loop repetitions from ``mlx_loop_hook`` and fiddling with different rates, which also varied a lot between MacOS and Linux.
-- Sprites: The minilibx in Linux doesn't handle transparency in sprites the same way MacOS' minilibx does. On Linux the sprites will just have black pixels in the transparent area. I found ways to work this around but it was too much of a hussle.
-- Leaks: Minilibx has some leaks that are only detected by ``valgrind``. Using the function ``mlx_destroy_display`` solves that leak, but apparently that function isn't a part of the minilibx in MacOS. For this reason I decided to split the file where that function was called, so that the file compiled in Linux had that extra line for valgrind to be happy.
-- Keycodes: yet another difference between MacOS and Linux. The keycodes (``WASD``, ``ESC``, etc) are completely different. I defined those variables straight from the makefile to correct this issue.
 
 ## Summary
 This has been my favorite project so far, coding my own pacman clone was so much fun, regargless how flawed it might be :)
