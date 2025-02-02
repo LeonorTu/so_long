@@ -2,16 +2,6 @@
 
 # <img src="./img/game1.png" alt="So_long" width="500">
 
-### Table of Contents
-
-* [Introduction](#introduction)
-* [How it Works](#how-it-works)
-* [Extras](#extras)
-* [Gameplay](#gameplay)
-* [Maps](#maps)
-* [Installation](#installation)
-* [Summary](#summary)
-
 ## Introduction
 In this project, we'll code a simple 2D game to get familiar with the mlx library and UI in general. In my case, it will be Rabbit.
 
